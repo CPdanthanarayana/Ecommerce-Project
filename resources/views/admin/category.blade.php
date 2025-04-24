@@ -9,6 +9,27 @@
         width: 400px;
         height: 50px;
     }
+    .btn_category
+    {
+        width: 150px;
+        height: 50px;
+        background-color: rgb(112, 0, 187);
+        color: white;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+    .btn_category:hover
+    {
+        background-color: rgb(146, 0, 243);
+        
+    }
+    .btn_category:active
+    {
+        background-color: rgb(198, 113, 255);
+    }
+    
 
     .div_deg 
     {
@@ -18,7 +39,36 @@
         margin: 30px;
     }
 
+    .table_deg
+    {
+        margin: auto;
+        width: 50%;
+        margin: auto;
+        
+    }
+
     
+    .table_deg th
+    {
+        background:rgb(112, 0, 187);
+        color: white;
+        padding: 10px;
+        border-top: 3px solid rgb(112, 0, 187);
+        border-left: 3px solid rgb(112, 0, 187);
+        border-right: 3px solid rgb(112, 0, 187);
+        border-bottom: 3px solid rgb(118, 118, 118);
+        text-align: center;
+
+    }
+    .table_deg td
+    {
+        
+        color: white;
+        padding: 10px;
+        border: 3px solid;
+        border-color: rgb(118, 118, 118);
+        text-align: left;
+    }
 
    </style>
   </head>
@@ -37,11 +87,23 @@
                     @csrf
                         <div>
                             <input type="text" name="category">
-                            <input class="btn btn-primary" type="submit" value="Add Category" color="blue">
+                            <input class="btn_category" type="submit" value="Add Category" color="blue">
                         </div>
                     </form>
                    </div>
                 
+                </div>
+                <div>
+                    <table class="table_deg" style="width: 80%;">
+                        <tr>
+                            <th>Category Name</th>
+                        </tr>
+                        @foreach($data as $data)
+                        <tr>
+                            <td>{{ $data->category_name }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>     
         </div>
