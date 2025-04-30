@@ -115,11 +115,13 @@
                     <table class="table_deg" style="width: 80%;">
                         <tr>
                             <th>Category Name</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                         @foreach($data as $data)
                         <tr>
                             <td>{{ $data->category_name }}</td>
+                            <td style="text-align: center;"><a class="btn btn-success" href="{{url('edit_category', $data->id)}}">Edit</a></td>
                             <td style="text-align: center;">
                                 <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_category', $data->id)}}">Delete</a>
                             </td>
