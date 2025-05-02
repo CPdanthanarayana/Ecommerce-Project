@@ -46,4 +46,9 @@ class AdminController extends Controller
         return redirect('/view_category');
     }
 
+    public function add_product()
+    {
+        return view('admin.add_product');
+    }
+
 }
