@@ -23,14 +23,11 @@
         color: white; 
         font-style: italic; 
     }
-    input[type='submit']
+   
+    .btn_category
     {
         width: 150px;
         height: 50px;
-    }
-    .btn_category
-    {
-        
         background-color: rgb(112, 0, 187);
         color: white;
         border-radius: 5px;
