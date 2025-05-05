@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 
+use App\Models\Product;
+
 class AdminController extends Controller
 {
     public function view_category()
@@ -48,7 +50,31 @@ class AdminController extends Controller
 
     public function add_product()
     {
-        return view('admin.add_product');
+        $category = Category::all();
+        return view('admin.add_product', compact('category'));
+    }
+
+    public function upload_product(Request $request)
+    {
+        $product = new Product;
+        $product -> title = $request -> title;
+        $product -> description = $request -> description;
+        $product -> price = $request -> price;
+        $product -> quantity = $request -> quantity;
+        $product -> category = $request -> category;
+
+        // image upload
+        $image = $request->file('image');
+        if ($image) {
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('product', $image_name);
+            $product->image = $image_name;
+        }
+
+        $product->save();
+        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Added Successfully');
+        return redirect() -> back();
+
     }
 
 }

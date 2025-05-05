@@ -114,7 +114,8 @@
                 <div class="container-fluid">
                     <h1 class="h1 mb-4 text-gray-800">Add Product</h1>
                     <div class="div_deg">
-                        <form action="">
+                        <form action="{{url('upload_product')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div>
                                 <label for="">Product Title</label>
                                 <input type="text" name="title" required>
@@ -134,9 +135,11 @@
                             <div>
                                 <label for="">Product Category</label>
                                 <select name="category" required>
-                                    <option value="">Select Category</option>
-                                    
-                                    
+
+                                    <option value="">Select a Category</option>
+                                    @foreach($category as $category)
+                                    <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                                    @endforeach
                                     
                                 </select>
                             </div>
