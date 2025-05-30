@@ -80,7 +80,7 @@
                             @foreach($product as $products)
                             <tr>
                                 <td>{{$products->title}}</td>
-                                <td>{{$products->description}}</td>
+                                <td>{!!Str::limit($products->description, 20, '...')!!}</td> <!-- Limit the description to 20 characters and add ellipsis -->
                                 <td>{{$products->price}}</td>
                                 <td>{{$products->quantity}}</td>
                                 <td>{{$products->category}}</td>
