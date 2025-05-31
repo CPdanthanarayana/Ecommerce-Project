@@ -86,6 +86,13 @@ class AdminController extends Controller
     public function delete_product($id)
     {
         $product = Product::find($id);
+
+        $image_path = public_path('product/'.$product->image);
+        if (file_exists($image_path))
+        {
+            unlink($image_path);
+        }
+
         $product -> delete();
         toastr()->timeOut(10000)->closeButton()->addSuccess('Product Deleted Successfully');
         return redirect() -> back();
