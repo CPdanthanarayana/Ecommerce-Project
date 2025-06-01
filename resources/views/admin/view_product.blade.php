@@ -74,7 +74,9 @@
                                 <th>Product Quantity</th>
                                 <th>Product Category</th>
                                 <th>Product Image</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
+                                
                             </tr>
 
                             @foreach($product as $products)
@@ -85,6 +87,7 @@
                                 <td>{{$products->quantity}}</td>
                                 <td>{{$products->category}}</td>
                                 <td><img src="/product/{{$products->image}}" alt="" height="100" width="100"></td>
+                                <td><a href="{{url('edit_product', $products->id)}}" class="btn btn-success">Edit</a></td>
                                 <td><a onclick="confirmation(event)" href="{{url('delete_product', $products->id)}}" class="btn btn-danger">Delete</a></td>
                             </tr>
                             @endforeach
