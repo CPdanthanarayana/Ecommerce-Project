@@ -5,7 +5,7 @@
    <style>
     .div_deg {
     padding: 30px 40px;
-    background:rgb(43, 1, 59);
+    background:#2b013b;
     border-radius: 10px;
     box-shadow: 0 4px 24px rgba(93, 6, 151, 0.31);
     width: 80%;
@@ -54,6 +54,31 @@
     font-size: 1rem;
     }
 
+    input[type="search"] {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background: #f9f9f9;
+        color: #222;
+        font-size: 1rem;
+    }
+    .searchButton {
+        padding: 10px 20px;
+        background-color:rgb(108, 66, 125);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
    </style>
   </head>
   <body>
@@ -64,6 +89,10 @@
         <div class="page-content">
             <div class="page-header">
                 <div class="container-fluid">
+                    <form action="{{url('search_product')}}" method="get">
+                        <input type="search" name="search" placeholder="Search for products...">
+                        <button type="submit" class="searchButton">Search</button>
+                    </form>
                     <h1 class="h1 mb-4 text-gray-800">View Product</h1>
                     <div class="div_deg">
                         <table class="table_deg">

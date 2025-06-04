@@ -127,4 +127,21 @@ class AdminController extends Controller
         return redirect('/view_product');
     }
 
+    public function search_product(Request $request)
+    {
+        $search = $request->search;
+        if ($search != "") {
+            $product = Product::where('title', 'LIKE', '%' . $search . '%')->paginate(3);
+            if (count($product) > 0) {
+                return view('admin.view_product', compact('product'));
+            } else {
+                toastr()->timeOut(10000)->closeButton()->addError('No Product Found');
+                return redirect()->back();
+            }
+        } else {
+            toastr()->timeOut(10000)->closeButton()->addError('Please Enter a Search Term');
+            return redirect()->back();
+        }
+    }
+
 }
