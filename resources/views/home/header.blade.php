@@ -1,3 +1,20 @@
+<style>
+  .logoutButton input[type="submit"] {
+    
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    outline: inherit;
+  }
+  .logoutButton{
+    padding-right : 20px;
+  }
+</style>
+
 <header class="header_section">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="index.html">
@@ -34,6 +51,19 @@
             </li>
           </ul>
           <div class="user_option">
+
+            @if (Route::has('login'))
+              @auth
+              <a href="">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </a>
+              <form class="logoutButton" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <input type="submit" value="Logout">
+              </form>
+
+              @else
+                    
             <a href="{{url('/login')}}">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
@@ -47,14 +77,12 @@
                 Register
               </span>
             </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
+              @endauth
+            @endif
+
+            
+            
+            
           </div>
         </div>
       </nav>
