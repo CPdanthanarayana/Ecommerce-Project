@@ -9,7 +9,7 @@
         @foreach ($product as $products)
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
+            
               <div class="img-box">
                 <img src="{{ asset('product/' . $products->image) }}" alt="">
               </div>
@@ -24,12 +24,10 @@
                   </span>
                 </h6>
               </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
+              <div>
+                <a class="btn btn-danger" href="{{url('product_details', $products->id)}}">Details</a>
               </div>
-            </a>
+            
           </div>
         </div> 
         @endforeach

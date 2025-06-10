@@ -62,3 +62,5 @@ route::post('update_product/{id}', [AdminController::class, 'update_product'])->
 
 route::get('search_product', [AdminController::class, 'search_product'])->
     middleware(['auth', 'admin']);
+
+route::get('product_details/{id}', [HomeController::class, 'product_details']);
